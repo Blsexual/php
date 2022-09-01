@@ -5,9 +5,33 @@
         echo '<link rel="stylesheet" href="style.css">';
         $Checked = FALSE;
         $Today = date("Y-m-d");
-        $CurrentTime = date("h:i");
+        $CurrentTime = date("H:i");
+        $CurrentYear = date("Y");
+        $CurrentMonth = date("m");
+        $CurrentDay = date("d");
+        $dummy = NULL;
 
-
+        echo "<div id='DataContainer'>";
+        $sql = "SELECT * FROM worklog";
+        if($result = mysqli_query($conn, $sql)){
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_array($result)){
+                    echo "<div id='Test'>";
+                    echo "<div id='TimeS' class='DataBox'> Time: " . $row['TimeS'] . " - " . $row['TimeE']. "<div>  </div> </div>";
+                    echo "<div id='Date' class='DataBox'> Posts date: " . $row['Date'] . "</div>";
+                    echo "<div id='Comment' class='DataBox'> Comment: " . $row['Comment'] . "</div>";
+                    echo "</div>";
+                }
+                echo "</table>";
+                // Free result set
+                mysqli_free_result($result);
+            } else{
+                echo "No match for Query";
+            }
+        } else{
+            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+        }
+        echo "</div>";
         
         if (!empty($_POST) || ($_POST['Kommentar'] != NULL)){
             $Date = $_POST['Date'];
@@ -38,39 +62,26 @@
                 }
             }
         }
-
-
-        $sql = "SELECT * FROM worklog";
-        if($result = mysqli_query($conn, $sql)){
-            if(mysqli_num_rows($result) > 0){
-                while($row = mysqli_fetch_array($result)){
-                    echo "<div id='Test'>";
-                    echo "Starting time: " . $row['TimeS'];
-                    echo "<br> Ending time: " . $row['TimeE'];
-                    echo "<br> Posts date: " . $row['Date'];
-                    echo "<br> Comment: " . $row['Comment'];
-                    echo "</div>";
-                }
-                echo "</table>";
-                // Free result set
-                mysqli_free_result($result);
-            } else{
-                echo "No match for Query";
-            }
-        } else{
-            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-        }
-
-
     ?>
-    
-    <form method="post">
-    Date: <input type="text" name="Date" required="require" onfocus='(this.type="date")' onblur='(this.type="text")' <?php echo'value="'.$Today.'"' ?>><br>
-    Starting time: <input type="text" name="TimeS" required="require" onfocus='(this.type="time")' onblur='(this.type="text")' <?php echo'value="'.$CurrentTime.'"' ?>><br>
-    Ending time: <input type="text" name="TimeE" required="require" onfocus='(this.type="time")' onblur='(this.type="text")'><br>
-    Kommentar: <input type="text" name="Kommentar" required="require">
-    <input type="submit">
+
+        <form method="post">
+        Date: <input type="text" name="Date" required="require" onfocus='(this.type="date")' onblur='(this.type="text")' <?php echo'value="'.$Today.'"' ?>><br>
+        Starting time: <input type="text" name="TimeS" required="require" onfocus='(this.type="time")' onblur='(this.type="text")' <?php echo'value="'.$CurrentTime.'"' ?>><br>
+        Ending time: <input type="text" name="TimeE" required="require" onfocus='(this.type="time")' onblur='(this.type="text")'><br>
+        Kommentar: <input type="text" name="Kommentar" required="require">
+        <input type="submit">
     </form>
+
+    <div id="CalendarBox">    
+        <?php 
+            while ($dummy < cal_days_in_month(CAL_GREGORIAN,$CurrentMonth,$CurrentYear)){
+                $dummy += 1;
+                echo '<div class="CalDaySquare">';
+                echo '<p id="CalNum">'.$dummy.'</p>';
+                echo '</div>';
+            }
+        ?>
+    </div>
 </div>
 
 

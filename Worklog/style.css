@@ -3,12 +3,53 @@
 }
 
 #Test{
-    background-color: red;
-    margin-top: 5px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px ;
+    position: relative; 
+    background-color: blue;
+    width: 400px;
 }
 
 #fuckyoupost{
     background-color: orange;
     width: 100vw;
     height: 100vh;
+    overflow-x: hidden;
 }
+
+#DataContainer{
+    background-color: purple;
+    position: relative;
+    float: right;
+    width: 30vw;
+    top: 0vh;
+}
+
+.DataBox{
+    width: 20.75vw;
+    padding: 1vh;
+    
+}
+
+#CalendarBox{
+    width: 45vw;
+    height: 60vh;
+    background-color: #ff69b4;
+    position: relative;
+    display: block;
+}
+
+#CalNum{
+    text-align: center;
+}
+
+.CalDaySquare{
+    background-color: rgb(9, 255, 0);
+    width: 10vh;
+    height: 10vh;
+    margin: 0.6vh;
+    float: left;
+    font-size: 7vh;
+}
+
