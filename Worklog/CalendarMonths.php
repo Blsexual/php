@@ -24,7 +24,7 @@
                 echo '<form method="post" action="CalendarMonths.php">'; // Year -1
                     echo '<input type="hidden" name="YearSelect" value="'.$YearDown.'">';
                     echo '<input type="hidden" name="ShowMonths" value="1">';
-                    echo '<input type="submit" class="CalDaySquare" id="Year" value="'.$YearDown.'">';
+                    echo '<input type="submit" class="CalDaySquare" id="Year" value="←">';
                 echo '</form>';
 
                 echo '<form method="post" action="CalendarMonths.php">'; // Year Current
@@ -36,11 +36,12 @@
                 echo '<form method="post" action="CalendarMonths.php">'; // Year +1
                     echo '<input type="hidden" name="YearSelect" value="'.$YearUp.'">';
                     echo '<input type="hidden" name="ShowMonths" value="1">';
-                    echo '<input type="submit" class="CalDaySquare" id="Year" value="'.$YearUp.'">';
+                    echo '<input type="submit" class="CalDaySquare" id="Year" value="→">';
                 echo '</form>';
 
                 while ($dummy < 12){ // Print out 12 months
                     $dummy += 1;
+                    $monthName = date('M', mktime(0, 0, 0, $dummy, 1));
                     if($dummy < 10){ // Prefix single numbers by a 0 (01,02,03)
                         $dummy = "0" . $dummy;
                     }
@@ -50,10 +51,10 @@
                                 <?php echo '<input type="hidden" name="ShowDays" value="'.$dummy.'">';
                                     echo '<input type="hidden" name="YearSelect" value="'.$Year.'">';
                                     if (($dummy == date('m')) && ($Year == date('Y'))){ // If the month is the same as the current month. Color the month orange
-                                        echo '<input type="submit" class="CalDaySquare" value="'.$dummy.'" style="background-color:orange;">';
+                                        echo '<input type="submit" class="CalDaySquare" value="'.$monthName.'" style="background-color:orange;">';
                                     }
                                     else{
-                                        echo '<input type="submit" class="CalDaySquare" value="'.$dummy.'">';
+                                        echo '<input type="submit" class="CalDaySquare" value="'.$monthName.'">';
                                     }
                                 ?>
                             </form>

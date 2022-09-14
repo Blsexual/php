@@ -18,7 +18,13 @@
                 if(mysqli_num_rows($result) > 0){
                     while($row = mysqli_fetch_array($result)){
                         echo "<div id='Test'>";
-                            echo "<div id='TimeS' class='DataBox'> Time: " . $row['TimeS'] . " - " . $row['TimeE']. "<div>  </div> </div>";
+                            echo "<div id='TimeS' class='DataBox'> Time: " . $row['TimeS'] . " - " . $row['TimeE'];
+                                echo "<form method='post' action='DeletePost.php'>";
+                                    echo "<input type='hidden' name='DeletePost' value='".$row['ID']."'>";
+                                    echo "<input type='hidden' name='PrevPage' value='CalendarIndex'>";
+                                    echo "<input type='submit' id='Delete' value='Delete'>";
+                                echo "</form>";
+                            echo "</div>";
                             echo "<div id='Date' class='DataBox'> Posts date: " . $row['Date'] . "</div>";
                             echo "<div id='Comment' class='DataBox'> Comment: " . $row['Comment'] . "</div>";
                         echo "</div>";

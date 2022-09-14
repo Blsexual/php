@@ -20,7 +20,6 @@
     ?>
     <div id="CalendarBox">    
         <?php 
-
             if(1==1){
                 ?>
                     <form method="post" action="CalendarMonths.php">
@@ -43,10 +42,10 @@
                             <?php echo '<input type="hidden" name="TimeE" value="'.NULL.'">' ?>
                             <?php echo '<input type="hidden" name="TimeS" value="'.NULL.'">';
                             if(($dummy == date('d')) && ($_SESSION['Month'] == date('m')) && ($_SESSION['Year'] == date('Y'))){
-                                echo'<input type="submit" class="CalDaySquare" value="'.$dummy.'" style="background-color:orange;">';
+                                echo'<input type="submit" id="DayC" class="CalDaySquare" value="'.$dummy.'">';
                             }
                             else{
-                                echo'<input type="submit" class="CalDaySquare" value="'.$dummy.'">';
+                                echo'<input type="submit" id="DayR" class="CalDaySquare" value="'.$dummy.'">';
                             }
                             ?>
                         </form>

@@ -19,9 +19,8 @@
             $Today = "0" . $Today;
         }
 
-
-        $EE = date('D', strtotime($Today));
-        echo $EE;
+        $monthName = date('M', mktime(0, 0, 0, $_SESSION['Month']));
+        echo $monthName;
         
         
         echo "<div id='DataContainer'>";
@@ -30,7 +29,13 @@
             if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_array($result)){
                     echo "<div id='Test'>";
-                        echo "<div id='TimeS' class='DataBox'> Time: " . $row['TimeS'] . " - " . $row['TimeE']. " </div>";
+                        echo "<div id='TimeS' class='DataBox'> Time: " . $row['TimeS'] . " - " . $row['TimeE'];
+                            echo "<form method='post' action='DeletePost.php'>";
+                                echo "<input type='hidden' name='DeletePost' value='".$row['ID']."'>";
+                                echo "<input type='hidden' name='PrevPage' value='upload'>";
+                                echo "<input type='submit' id='Delete' value='Delete'>";
+                            echo "</form>";
+                        echo "</div>";
                         echo "<div id='Date' class='DataBox'> Posts date: " . $row['Date'] . "</div>";
                         echo "<div id='Comment' class='DataBox'> Comment: " . $row['Comment'] . "</div>";
                     echo "</div>";
@@ -76,25 +81,25 @@
             }
         }
     ?>
-        <form method="post">
-            Date: <input type="text" name="Date" required="require" onfocus='(this.type="date")' onblur='(this.type="text")' <?php echo'value="'.$Today.'"' ?>><br>
-            Starting time: <input type="text" name="TimeS" required="require" onfocus='(this.type="time")' onblur='(this.type="text")' <?php echo'value="'.$CurrentTime.'"' ?>><br>
-            Ending time: <input type="text" name="TimeE" required="require" onfocus='(this.type="time")' onblur='(this.type="text")'><br>
-            Kommentar: <input type="text" name="Kommentar" required="require">
-            <?php echo '<input type="hidden" name="CurrentDate" value="'.$Today.'">'?>
-            <?php echo '<input type="hidden" name="Reload" value="1">'?>
-            <input type="submit">
-        </form>
 
-    <div id="CalendarBox">    
-        <form method="post" action="CalendarIndex.php">
-            <input type="submit" id="Year" value="To index">
-        </form>
-        <form method="post" action="CalendarDays.php">
-            <?php echo '<input type="hidden" name="ShowDays" value="'.$dummy.'">' ?>
-            <?php echo '<input type="hidden" name="DateTransfer" value="'.$DateTransfer.'">' ?>
-            <input type="submit" id="Year" value="Back">
-        </form>
+<div id="CalendarBox">    
+    <form method="post">
+        Date: <input type="text" name="Date" required="require" onfocus='(this.type="date")' onblur='(this.type="text")' <?php echo'value="'.$Today.'"' ?>><br>
+        Starting time: <input type="text" name="TimeS" required="require" onfocus='(this.type="time")' onblur='(this.type="text")' <?php echo'value="'.$CurrentTime.'"' ?>><br>
+        Ending time: <input type="text" name="TimeE" required="require" onfocus='(this.type="time")' onblur='(this.type="text")'><br>
+        Kommentar: <input type="text" name="Kommentar" required="require">
+        <?php echo '<input type="hidden" name="CurrentDate" value="'.$Today.'">'?>
+        <?php echo '<input type="hidden" name="Reload" value="1">'?>
+        <input type="submit">
+    </form>
+    <form method="post" action="CalendarIndex.php">
+        <input type="submit" id="Year" value="To index">
+    </form>
+    <form method="post" action="CalendarDays.php">
+        <?php echo '<input type="hidden" name="ShowDays" value="'.$dummy.'">' ?>
+        <?php echo '<input type="hidden" name="DateTransfer" value="'.$DateTransfer.'">' ?>
+        <input type="submit" id="Year" value="Back">
+    </form>
         <?php 
             
 

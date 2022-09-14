@@ -14,8 +14,9 @@
 }
 
 #fuckyoupost{
-    background-color: orange;
+    background-color: rgb(31, 31, 31);
     width: 100vw;
+    height: 100vh;
     position: absolute;
     overflow: hidden;
 }
@@ -25,7 +26,7 @@
     position: relative;
     float: right;
     width: 30vw;
-    height: 100vh;
+    height: 100%;
     top: 0vh;
     overflow-y: scroll;
 }
@@ -44,9 +45,10 @@
 }
 
 #CalendarBox{
-    width: 45vw;
-    min-height: 60vh;
-    background-color: #ff69b4;
+    width: 55%;
+    min-height: 60%;
+    background-color: #dbdbdb;
+    margin: auto;
     position: relative;
     overflow: auto;
 }
@@ -56,13 +58,18 @@
 }
 
 input[type=submit].CalDaySquare{
-    background-color: rgb(9, 255, 0);
-    width: 10vh;
-    height: 10vh;
+    background-color: rgb(228, 228, 228);
+    width: 10%;
+    height: 10%;
     margin: 0.6vh;
     float: left;
-    font-size: 7vh;
+    font-size: 4vh;
+    border-radius: 100% 100% 100%;
     border: none;
+}
+
+input[type=submit]#DayC.CalDaySquare{
+    background-color: rgb(255, 45, 45);
 }
 
 #Year{
