@@ -1,5 +1,6 @@
 *{
     margin: 0;
+    
 }
 
 #Test{
@@ -7,15 +8,16 @@
     margin-top: 10px;
     margin-bottom: 10px ;
     position: relative; 
-    background-color: blue;
-    width: 400px;
+    overflow-wrap: normal;
+    background-color: rgb(105, 105, 255);
+    width: 25vw;
 }
 
 #fuckyoupost{
     background-color: orange;
     width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
+    position: absolute;
+    overflow: hidden;
 }
 
 #DataContainer{
@@ -23,7 +25,9 @@
     position: relative;
     float: right;
     width: 30vw;
+    height: 100vh;
     top: 0vh;
+    overflow-y: scroll;
 }
 
 .DataBox{
@@ -32,24 +36,44 @@
     
 }
 
+#DeleteButton{
+    border: none;
+    float: right;
+    margin-right: 1vh;
+    margin-top: 1vh;
+}
+
 #CalendarBox{
     width: 45vw;
-    height: 60vh;
+    min-height: 60vh;
     background-color: #ff69b4;
     position: relative;
-    display: block;
+    overflow: auto;
 }
 
 #CalNum{
     text-align: center;
 }
 
-.CalDaySquare{
+input[type=submit].CalDaySquare{
     background-color: rgb(9, 255, 0);
     width: 10vh;
     height: 10vh;
     margin: 0.6vh;
     float: left;
     font-size: 7vh;
+    border: none;
+}
+
+#Year{
+    background-color: rgb(9, 255, 0);
+    width: 10vh;
+    height: 10vh;
+    margin: 0.6vh;
+    float: left;
+    font-size: 4vh;
+    border: none;
+    
+    
 }
 
