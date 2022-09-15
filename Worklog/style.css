@@ -1,7 +1,7 @@
 *{
     margin: 0;
-    
 }
+
 
 #Test{
     margin: auto;
@@ -45,12 +45,13 @@
 }
 
 #CalendarBox{
-    width: 55%;
-    min-height: 60%;
+    width: 1000px;
+    position: absolute;
+    min-height: 600px;
     background-color: #dbdbdb;
-    margin: auto;
-    position: relative;
     overflow: auto;
+    right: 35%;
+    top: 10%;
 }
 
 #CalNum{
@@ -58,29 +59,76 @@
 }
 
 input[type=submit].CalDaySquare{
+    margin: 0;
+    font-size: 50px;
+    border-radius: 100% 100% 100%;
+    border: none;
+}
+
+#BackB{
+    position: absolute;
+    top: 480px;
+    left: 0px;
+}
+
+#Back{
+    font-size: 40px;
+}
+
+.CalDaySquare{
     background-color: rgb(228, 228, 228);
-    width: 10%;
-    height: 10%;
-    margin: 0.6vh;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
     float: left;
     font-size: 4vh;
     border-radius: 100% 100% 100%;
     border: none;
 }
 
-input[type=submit]#DayC.CalDaySquare{
+.CalDaySquare:hover{
+    background-color: rgb(115, 255, 0);
+}
+
+#YearC.CalDaySquare{
+    background-color: rgb(255, 45, 45);
+    margin: 10px;
+    font-size: 40px;
+}
+
+#YearM.CalDaySquare{
+    background-color: rgb(255, 45, 45);
+    margin: 10px;
+    margin-top: 35px;
+    width: 100px;
+    height: 50px;
+}
+
+#YearC2.CalDaySquare{
+    background-color: rgb(255, 45, 45);
+    font-size: 40px;
+
+}
+
+#YearM2.CalDaySquare{
+    background-color: rgb(255, 45, 45);
+    width: 100px;
+    height: 50px;
+}
+
+p#YearM2{
+    position: absolute;
+    font-size: 60px;
+    top: 2px;
+    margin-left: 20px;
+}
+
+#DayC.CalDaySquare{
     background-color: rgb(255, 45, 45);
 }
 
-#Year{
-    background-color: rgb(9, 255, 0);
-    width: 10vh;
-    height: 10vh;
-    margin: 0.6vh;
-    float: left;
-    font-size: 4vh;
-    border: none;
-    
-    
+#DayC.CalDaySquare:hover{
+    background-color: rgb(115, 255, 0);
 }
+
 

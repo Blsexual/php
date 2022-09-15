@@ -8,7 +8,6 @@
 
         $Checked = FALSE;
         $dummy = NULL;
-        echo $_SESSION['Date'];
         if(@$_POST['ShowDays']){
             $_SESSION['Month'] = $_POST['ShowDays'];
         }
@@ -22,11 +21,13 @@
         <?php 
             if(1==1){
                 ?>
-                    <form method="post" action="CalendarMonths.php">
-                        <?php echo '<input type="hidden" name="ShowMonths" value="'.$Year.'">' ?>
-                        <?php echo '<input type="hidden" name="YearSelect" value="'.$Year.'">' ?>
-                        <?php echo'<input type="submit" class="CalDaySquare" id="Year" value="Back">' ?>
-                    </form>
+                    <div class="CalDaySquare" id="BackB">
+                        <form method="post" action="CalendarMonths.php">
+                            <?php echo '<input type="hidden" name="ShowMonths" value="'.$Year.'">' ?>
+                            <?php echo '<input type="hidden" name="YearSelect" value="'.$Year.'">' ?>
+                            <?php echo'<input type="submit" class="CalDaySquare" id="Back" value="Back">' ?>
+                        </form>
+                    </div>
                 <?php
                 while ($dummy < cal_days_in_month(CAL_GREGORIAN,$_SESSION['Month'],$Year)){
                     $dummy += 1;

@@ -95,11 +95,13 @@
     <form method="post" action="CalendarIndex.php">
         <input type="submit" id="Year" value="To index">
     </form>
-    <form method="post" action="CalendarDays.php">
-        <?php echo '<input type="hidden" name="ShowDays" value="'.$dummy.'">' ?>
-        <?php echo '<input type="hidden" name="DateTransfer" value="'.$DateTransfer.'">' ?>
-        <input type="submit" id="Year" value="Back">
-    </form>
+    <div class="CalDaySquare" id="BackB">
+        <form method="post" action="CalendarDays.php">
+            <?php echo '<input type="hidden" name="ShowDays" value="'.$dummy.'">' ?>
+            <?php echo '<input type="hidden" name="DateTransfer" value="'.$DateTransfer.'">' ?>
+            <input type="submit" class="CalDaySquare" id="Back" value="Back">
+        </form>
+    </div>
         <?php 
             
 
