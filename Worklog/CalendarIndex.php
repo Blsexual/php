@@ -11,7 +11,6 @@
         $_SESSION['Month'] = date('m');
         $_SESSION['Date'] = date('d');
         @$_SESSION['FullDate'] = $_SESSION['Year'].'-'.$_SESSION['Month'].'-'. $_SESSION['Date'];
-        echo $_SESSION['FullDate'];
         echo "<div id='DataContainer'>";
             $sql = "SELECT * FROM worklog order by ID desc";
             if($result = mysqli_query($conn, $sql)){

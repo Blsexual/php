@@ -24,11 +24,19 @@
         
         
         echo "<div id='DataContainer'>";
+        
         $sql = "SELECT * FROM `worklog` WHERE Date = '$Today' order by ID desc";
         if($result = mysqli_query($conn, $sql)){
             if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_array($result)){
+                    $id = $row['ID'];
                     echo "<div id='Test'>";
+                    if (!empty($_POST['Edit'])){
+                        echo '<form method="post">';
+                            echo '<input type="hidden" name="Editing" value="'.$id.'">';
+                            echo '<input type="submit" id="Edit" value="Back">';
+                        echo '</form>';
+                    }
                         echo "<div id='TimeS' class='DataBox'> Time: " . $row['TimeS'] . " - " . $row['TimeE'];
                             echo "<form method='post' action='DeletePost.php'>";
                                 echo "<input type='hidden' name='DeletePost' value='".$row['ID']."'>";
@@ -102,9 +110,41 @@
             <input type="submit" class="CalDaySquare" id="Back" value="Back">
         </form>
     </div>
-        <?php 
-            
+    <?php
+    if (@$_POST['Edit'] == 0){
+        echo '<div id="EditButton">';
+            echo '<form method="post">';
+                echo '<input type="hidden" name="Edit" value="1">';
+                echo '<input type="submit" value="Edit">';
+            echo '</form>';
+        echo '</div>';
+    }
+    if (@$_POST['Edit'] == 1){
+        echo '<div id="EditButton2">';
+            echo '<form method="post">';
+                echo '<input type="hidden" name="Edit" value="0">';
+                echo '<input type="submit" value="StopEdit">';
+            echo '</form>';
+        echo '</div>';
+    }
+    if(@$_POST['Editing']){
 
+        $sql = "SELECT * FROM worklog WHERE `worklog`.`ID` = ".$_POST['Editing'];
+        if($result = mysqli_query($conn, $sql)){
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_array($result)){
+                    $dummy = $row['TimeS'];
+                    echo "Starting time: <input type='time' name='TimeS' required='require' placeholder='$dummy' value='$dummy'>";
+                    $dummy = $row['TimeE'];
+                    echo "Ending time: <input type='time' name='TimeE' required='require' placeholder='$dummy' value='$dummy'>";
+                    $dummy = $row['Comment'];
+                    echo "Kommentar: <input type='text' name='Kommentar' required='require' placeholder='$dummy' value='$dummy'>";
+
+                }
+            }
+        }
+        $sql = "UPDATE `worklog` SET `TimeS` = '14:30', `TimeE` = '17:45', `Date` = '2022-09-14', `Comment` = 'ded' WHERE `worklog`.`ID` = 294";
+    }
         ?>
     </div>
 </div>
