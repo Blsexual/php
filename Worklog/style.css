@@ -55,11 +55,12 @@
 #CalendarBox{
     width: 1000px;
     position: absolute;
-    min-height: 600px;
+    min-height: 700px;
     background-color: #dbdbdb;
     overflow: auto;
     right: 35%;
     top: 10%;
+    border-radius: 10px 10px 10px;
 }
 
 #CalNum{
@@ -75,7 +76,7 @@ input[type=submit].CalDaySquare{
 
 #BackB{
     position: absolute;
-    top: 480px;
+    top: 570px;
     left: 0px;
 }
 
@@ -83,11 +84,23 @@ input[type=submit].CalDaySquare{
     font-size: 40px;
 }
 
+#DateDisplay{
+    font-size: 55px;
+    height: 75px;
+    background-color: rgb(165, 10, 152);
+    float: inline-start;
+    left: 10px;
+}
+
+#Dates{
+    text-align: center;
+}
+
 .CalDaySquare{
     background-color: rgb(228, 228, 228);
     width: 100px;
     height: 100px;
-    margin: 10px;
+    margin: 12.5px;
     float: left;
     font-size: 4vh;
     border-radius: 100% 100% 100%;
@@ -119,17 +132,14 @@ input[type=submit].CalDaySquare{
 }
 
 #YearM2.CalDaySquare{
-    background-color: rgb(255, 45, 45);
+    background-color: rgba(255, 45, 45, 0);
+    position: absolute;
+    top: 100px;
     width: 100px;
     height: 50px;
+    font-size: 50px;
 }
-
-p#YearM2{
-    position: absolute;
-    font-size: 60px;
-    top: 2px;
-    margin-left: 20px;
-}
+    
 
 #DayC.CalDaySquare{
     background-color: rgb(255, 45, 45);
@@ -137,6 +147,27 @@ p#YearM2{
 
 #DayC.CalDaySquare:hover{
     background-color: rgb(115, 255, 0);
+}
+
+#ChooseDate{
+    background-color:rgb(228, 228, 228);
+    padding: 10px;
+    text-align: center;
+}
+#CurrentDate{
+    background-color:rgb(228, 228, 228);
+    padding: 10px;
+    text-align: center;
+}
+#EditPost{
+    background-color:rgb(228, 228, 228);
+    padding: 10px;
+    text-align: center;
+}
+.EditItems{
+    background-color:rgb(228, 228, 228);
+    padding: 10px;
+    text-align: center;
 }
 
 

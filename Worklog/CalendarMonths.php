@@ -15,10 +15,17 @@
         
         ?>
     <div id="CalendarBox">    
+                    <div id='DateDisplay'>  
+                        <div id='Dates'>
+                            <?php
+                                echo $Year." ";
+
+                            ?>
+                        </div>
+                    </div>
         <?php 
             if($_POST['ShowMonths'] != NULL){ // If a month has been recieved, fill with data
                 echo '<div class="CalDaySquare" id="YearM">';
-                echo '<p unselectable="on">←</p>';
                     echo '<form method="post" action="CalendarMonths.php">'; // Year -1
                         echo '<input type="hidden" name="YearSelect" value="'.$YearDown.'">';
                         echo '<input type="hidden" name="ShowMonths" value="1">';
@@ -30,7 +37,7 @@
                     echo '<form method="post" action="CalendarMonths.php">'; // Year Current
                         echo '<input type="hidden" name="YearSelect" value="'.date('Y').'">';
                         echo '<input type="hidden" name="ShowMonths" value="1">';
-                        echo '<input type="submit" class="CalDaySquare" id="YearC2" value="'.$Year.'">';
+                        echo '<input type="submit" class="CalDaySquare" id="YearC2" value="'.date('Y').'">';
                     echo '</form>';
                 echo '</div>';
 

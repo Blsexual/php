@@ -11,18 +11,25 @@
         $Kommentar = NULL;
         $DateTransfer = @$_SESSION['FullDate'];
         $Today = $_SESSION['FullDate'];
+
         if(@$_POST['ShowDays']){
             $_SESSION['Date'] = $_POST['ShowDays'];
         }
+
         $Today = $_SESSION['Year'] . "-" . $_SESSION['Month'] . "-" . $_SESSION['Date'];
+
         if ($Today < 10){
             $Today = "0" . $Today;
         }
 
-        $monthName = date('M', mktime(0, 0, 0, $_SESSION['Month']));
-        echo $monthName;
-        
-        
+        $monthName = date('M', mktime(0, 0, 0, $_SESSION['Month'])); 
+       
+        if((@$_POST['NewKommentar']) && (@$_POST['NewTimeE']) && (@$_POST['NewTimeS'])){
+            $sql = "UPDATE `worklog` SET `TimeS` = '".$_POST['NewTimeS']."', `TimeE` = '".$_POST['NewTimeE']."', `Comment` = '".$_POST['NewKommentar']."' WHERE `worklog`.`ID` = ".$_POST['NewID'];
+            if($result = mysqli_query($conn, $sql)){  
+            } 
+        }
+
         echo "<div id='DataContainer'>";
         
         $sql = "SELECT * FROM `worklog` WHERE Date = '$Today' order by ID desc";
@@ -133,12 +140,17 @@
         if($result = mysqli_query($conn, $sql)){
             if(mysqli_num_rows($result) > 0){
                 while($row = mysqli_fetch_array($result)){
-                    $dummy = $row['TimeS'];
-                    echo "Starting time: <input type='time' name='TimeS' required='require' placeholder='$dummy' value='$dummy'>";
-                    $dummy = $row['TimeE'];
-                    echo "Ending time: <input type='time' name='TimeE' required='require' placeholder='$dummy' value='$dummy'>";
-                    $dummy = $row['Comment'];
-                    echo "Kommentar: <input type='text' name='Kommentar' required='require' placeholder='$dummy' value='$dummy'>";
+                    echo "<form method = 'post'>";
+                        $dummy = $row['TimeS'];
+                        echo "Starting time: <input type='time' name='NewTimeS' required='require' placeholder='$dummy' value='$dummy'>";
+                        $dummy = $row['TimeE'];
+                        echo "Ending time: <input type='time' name='NewTimeE' required='require' placeholder='$dummy' value='$dummy'>";
+                        $dummy = $row['Comment'];
+                        echo "Kommentar: <input type='text' name='NewKommentar' required='require' placeholder='$dummy' value='$dummy'>";
+                        $dummy = $row['ID'];
+                        echo "<input type='hidden' name='NewID' value='$dummy'>";
+                        echo "<br><input type='submit' value='Update'>";
+                    echo "</form>";
 
                 }
             }

@@ -21,6 +21,15 @@
         <?php 
             if(1==1){
                 ?>
+                    <div id='DateDisplay'>
+                        <div id='Dates'>
+                            <?php
+                                echo $_SESSION['Year']." ";
+                                $monthName = date('F', mktime(0, 0, 0, $_SESSION['Month'], 1));
+                                echo $monthName;
+                            ?>
+                        </div>
+                    </div>
                     <div class="CalDaySquare" id="BackB">
                         <form method="post" action="CalendarMonths.php">
                             <?php echo '<input type="hidden" name="ShowMonths" value="'.$Year.'">' ?>
